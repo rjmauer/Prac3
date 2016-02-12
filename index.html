@@ -14,7 +14,6 @@
 
 	<body>
 	<style>
-	
 	</style>		<!-- This is the top bit with the image. 
 		I wonder why there's no image tag here? -->
 		<div class="whitebit"></div>
@@ -22,7 +21,7 @@
 		<!-- This is, well, the bottom bit -->
 		<div class="bottombit">
 			<p class="explanation">Intrepid spy, your next dead drop location is 37.4258709,-122.1712977.</p>
-			<button id="button" onclick="myFunction()">Refresh GPS: <div id="timer"></div></button>
+			<button id="button" onclick="myFunction()" style="height:50px;">Refresh GPS: <div id="timer"></div></button>
 
 			<div class="area">
 				<div class="box box1" id="longitude"></div>
@@ -51,7 +50,13 @@
 				longitud = longitud.toFixed(5);
 
 			    lat.innerHTML = "Latitude: " + latitud;
-			    lon.innerHTML = "Longitude: " + longitud;	
+			    lon.innerHTML = "Longitude: " + longitud;
+
+			    var latlon = position.coords.latitude + "," + position.coords.longitude;
+
+			    var img_url = "http://maps.googleapis.com/maps/api/staticmap?center="
+			    +latlon+"&zoom=14&size=400x300&sensor=false";
+			    document.getElementById("mapholder").innerHTML = "<img src='"+img_url+"'>";	
 			}
 
 		</script>
